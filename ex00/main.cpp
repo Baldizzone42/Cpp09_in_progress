@@ -6,7 +6,7 @@
 /*   By: jormoral <jormoral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 09:54:08 by jormoral          #+#    #+#             */
-/*   Updated: 2025/04/04 22:48:52 by jormoral         ###   ########.fr       */
+/*   Updated: 2025/04/05 20:08:47 by jormoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,24 @@ void BitcoinExchange::readcsv(BitcoinExchange &store)
 		std::string date = store.str.substr(start, dlt - start);
 		std::string value = store.str.substr(dlt + 1, end - 1);
 		store.csv[date] = atof(value.c_str());
-		//std::strof()
 	}
-	for (std::map<std::string, float>::iterator it = store.csv.begin(); it != store.csv.end(); ++it) {    
+	/* for (std::map<std::string, float>::iterator it = store.csv.begin(); it != store.csv.end(); ++it) {    
 		std::cout << "Fecha: " << it->first << " Valor: " << it->second << std::endl;
-	}
+	} */
 
 }
 
+void BitcoinExchange::parse_input(char *s1, BitcoinExchange &store)
+{
+	std::ifstream input(s1);
+	std::string infile;
+	(void)store;
+	while(std::getline(input, infile, '\n'))
+	{
+		std::cout << infile << std::endl;
+		break;
+	}
+}
 
 int main(int argc, char **argv)
 {
@@ -45,5 +55,7 @@ int main(int argc, char **argv)
 	(void)argv;
 	BitcoinExchange store;
 	store.readcsv(store);
+	store.parse_input(argv[1], store);
+	
 	return 0;
 }

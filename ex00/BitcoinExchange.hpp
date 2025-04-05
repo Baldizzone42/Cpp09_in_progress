@@ -6,7 +6,7 @@
 /*   By: jormoral <jormoral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 16:10:23 by jormoral          #+#    #+#             */
-/*   Updated: 2025/04/04 22:38:20 by jormoral         ###   ########.fr       */
+/*   Updated: 2025/04/05 20:03:37 by jormoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ class BitcoinExchange
 		BitcoinExchange(const BitcoinExchange &copy);
 		BitcoinExchange& operator=(const BitcoinExchange &other);
 		void readcsv(BitcoinExchange &store);
+
+		void parse_input(char *s1, BitcoinExchange &store);
 };
 
 
