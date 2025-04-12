@@ -1,32 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   BitcoinExchange.cpp                                :+:      :+:    :+:   */
+/*   RPN.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jormoral <jormoral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/04 19:20:18 by jormoral          #+#    #+#             */
-/*   Updated: 2025/04/08 20:38:20 by jormoral         ###   ########.fr       */
+/*   Created: 2025/04/09 17:56:31 by jormoral          #+#    #+#             */
+/*   Updated: 2025/04/09 18:07:22 by jormoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "BitcoinExchange.hpp"
+#include "RPN.hpp"
 
-BitcoinExchange::BitcoinExchange(){
+RPN::RPN(){
 }
 
-BitcoinExchange::~BitcoinExchange(){
+RPN::~RPN(){
 }
 
-BitcoinExchange::BitcoinExchange(const BitcoinExchange &copy)
-{
-	//Por completar..
+RPN::RPN(const RPN &copy){
+	//completar:
 	(void)copy;
 }
 
-BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange &other)
-{
-	//por completar;
+RPN& RPN::operator=(const RPN &other){
 	(void)other;
+	//completar
 	return *this;
 }

@@ -6,7 +6,7 @@
 /*   By: jormoral <jormoral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 16:10:23 by jormoral          #+#    #+#             */
-/*   Updated: 2025/04/06 18:59:52 by jormoral         ###   ########.fr       */
+/*   Updated: 2025/04/08 20:24:50 by jormoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 #include <sstream>
 #include <string>
 #include <limits.h>
+#include <algorithm>
+#include <iomanip>
 
 
 class BitcoinExchange
@@ -35,7 +37,8 @@ class BitcoinExchange
 		void readcsv(BitcoinExchange &store);
 
 		void parse_input(char *s1, BitcoinExchange &store);
-		void parse_line(std::string line);
+		int parse_line(std::string line);
+		double ex_rate(std::string fulldate);
 };
 
 

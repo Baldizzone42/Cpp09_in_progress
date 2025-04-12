@@ -1,32 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   BitcoinExchange.cpp                                :+:      :+:    :+:   */
+/*   PmergeMe.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jormoral <jormoral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/04 19:20:18 by jormoral          #+#    #+#             */
-/*   Updated: 2025/04/08 20:38:20 by jormoral         ###   ########.fr       */
+/*   Created: 2025/04/10 17:54:57 by jormoral          #+#    #+#             */
+/*   Updated: 2025/04/11 23:20:37 by jormoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "BitcoinExchange.hpp"
+#ifndef PMERGEME_HPP
+#define PMERGEME_HPP
 
-BitcoinExchange::BitcoinExchange(){
-}
 
-BitcoinExchange::~BitcoinExchange(){
-}
+#include <iostream>
+#include <string>
+#include <sstream>
+#include <list>
+#include <cstdlib>
 
-BitcoinExchange::BitcoinExchange(const BitcoinExchange &copy)
+
+class PmergeMe
 {
-	//Por completar..
-	(void)copy;
-}
+	public:
+		PmergeMe();
+		~PmergeMe();
+		PmergeMe(const PmergeMe &copy);
+		PmergeMe& operator=(const PmergeMe &other);
+		
+		//void sort(PmergeMe *merge);
+		
+		std::list<int*>Og;
+	private:
+};
 
-BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange &other)
-{
-	//por completar;
-	(void)other;
-	return *this;
-}
+
+
+#endif

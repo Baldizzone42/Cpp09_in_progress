@@ -1,32 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   BitcoinExchange.cpp                                :+:      :+:    :+:   */
+/*   PmergeMe.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jormoral <jormoral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/04 19:20:18 by jormoral          #+#    #+#             */
-/*   Updated: 2025/04/08 20:38:20 by jormoral         ###   ########.fr       */
+/*   Created: 2025/04/10 19:31:19 by jormoral          #+#    #+#             */
+/*   Updated: 2025/04/11 20:46:48 by jormoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "BitcoinExchange.hpp"
+#include "PmergeMe.hpp"
 
-BitcoinExchange::BitcoinExchange(){
+PmergeMe::PmergeMe(){
 }
 
-BitcoinExchange::~BitcoinExchange(){
+PmergeMe::~PmergeMe(){
 }
 
-BitcoinExchange::BitcoinExchange(const BitcoinExchange &copy)
-{
-	//Por completar..
+PmergeMe::PmergeMe(const PmergeMe &copy){
 	(void)copy;
 }
 
-BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange &other)
-{
-	//por completar;
+PmergeMe& PmergeMe::operator=(const PmergeMe &other){
 	(void)other;
 	return *this;
 }
