@@ -6,14 +6,60 @@
 /*   By: jormoral <jormoral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 17:52:14 by jormoral          #+#    #+#             */
-/*   Updated: 2025/04/12 22:04:12 by jormoral         ###   ########.fr       */
+/*   Updated: 2025/04/14 21:41:46 by jormoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
 
+size_t size_iterator(std::list<int *>::iterator *it)
+{
+	size_t cn = 0;
+	std::list<int*>::iterator itemp = *it;
+	while(*(*itemp))
+	{
+		cn++;
+		
+		//std::cout <<*(*itemp) <<  " " << cn << std::endl;
+		(*itemp)++;
+	}
+	//std::cout << " ]" << std::endl;
+	int tn = cn;
+	while(tn > 0)
+	{
+		(*itemp)--;
+		tn--;
+	}
+	return cn;
+}
 
 
+
+void print_sort(PmergeMe *merge, int npairs)
+{
+		std::list<int*>::iterator it = merge->Og.begin();
+		std::list<int*>::iterator itsecond = merge->Og.begin();
+		std::list<int*>::iterator e = merge->Og.end();
+		itsecond++;
+		//(void)npairs;
+		while(it != e)
+		{
+			int i = 0;
+			std::cout << "[ ";
+			while(i < npairs)	
+			{
+				std::cout << (*it)[i] << " ";
+				i++;
+			}
+			it++;
+			itsecond++;
+			std::cout << "]";
+		}
+		/* if(n >= (merge->Og.size())  && n % 2 != 0)
+				print_sort(merge + n, 1);
+		else */
+			std::cout << std::endl;
+}
 
 int* fusion_array(int *a, int *b, size_t npairs)
 {
@@ -36,6 +82,24 @@ int* fusion_array(int *a, int *b, size_t npairs)
 	return temp;
 }
 
+int* infusion_array(int *a, size_t size)
+{
+	int *temp = new int[size];
+	std::cout << "INFUSION Size: "  << size << std::endl;
+	
+	size_t i = 0;
+	size_t j = 0;
+	while(i < size)
+	{
+		temp[j] = a[i];
+		i++;
+		j++;
+	}
+	//std::cout <<  "sizeof: " << sizeof(temp) <<std::endl;
+	return temp;
+}
+
+
 
 PmergeMe* fusion_list(PmergeMe *merge, size_t npairs)
 {
@@ -48,31 +112,42 @@ PmergeMe* fusion_list(PmergeMe *merge, size_t npairs)
 	while(it != itend)
 	{
 		if(itsecond != itend)
-		{ /// arreglar por que da tamaño 4 a todos los nodos cuando es posible que uno solo tenga 2 ints
+		{
 			int *temp = new int[npairs];
 			temp = fusion_array((*it), (*itsecond), npairs);
 			tactico.push_back(temp);
-			
 			it++;
 			itsecond++;
+			//std::cout << "a" << std::endl;
 		}
 		if(itsecond == itend && merge->Og.size() % 2 != 0)
-		{
-			tactico.push_back((*it));
-			break;
+		{ 
+				int *test = infusion_array((*it), size_iterator(&it));
+				//size_t i = 0;
+				/* while(i < size_iterator(&it)){
+					std::cout << test[i] << std::endl;
+					i++;} */
+				//std::cout << "Poronga : " << size_iterator(&it) << std::endl;
+				tactico.push_back(test);
+/* 				merge->Og.clear();
+				result->Og = tactico;
+				print_sort(result, size_iterator(&it));
+				std::cout << "b" << std::endl; */
+				//break;
 		}
-		if(itsecond == itend)
+		else if(itsecond == itend)
 			break;
 		it++;
 		itsecond++;
 	}
 	merge->Og.clear();
 	result->Og = tactico;
+
 	
 	return result;
 }
 
-bool max_n(std::list<int*>::iterator it, std::list<int *>::iterator itsecond)
+/* bool max_n(std::list<int*>::iterator it, std::list<int *>::iterator itsecond)
 {
 	int itmax = 0;
 	int itsecondmax = 0;
@@ -93,7 +168,7 @@ bool max_n(std::list<int*>::iterator it, std::list<int *>::iterator itsecond)
 	if(itmax > itsecondmax && i == j)
 			return true;
 	return false;
-}
+} */
 
 
 void sort(PmergeMe *merge, size_t npairs)
@@ -118,34 +193,7 @@ void sort(PmergeMe *merge, size_t npairs)
 	}
 }
 
-void print_sort(PmergeMe *merge, int npairs)
-{
-		std::list<int*>::iterator it = merge->Og.begin();
-		std::list<int*>::iterator itsecond = merge->Og.begin();
-		itsecond++;
-		std::list<int*>::iterator e = merge->Og.end();
-		size_t n = 0;
-		while(it != e)
-		{
-			int i = 0;
-			std::cout << "[ ";
-			while(i < npairs)
-			{
-				if(!(*it)[i] && itsecond == e) 
-					break;
-				std::cout << (*it)[i] << " ";
-				i++;
-			}
-			n++;
-			it++;
-			itsecond++;
-			std::cout << "]";
-		}
-		/* if(n >= (merge->Og.size())  && n % 2 != 0)
-				print_sort(merge + n, 1);
-		else */
-			std::cout << std::endl;
-}
+
 
 int main(int argc, char **argv)
 {
@@ -163,6 +211,7 @@ int main(int argc, char **argv)
 		i++;
 	}
 	size_t size_merge = merge->Og.size();
+	merge->sizeog = merge->Og.size();
 	size_t npairs = 1;
 	int level = 0;
 	while(size_merge >= npairs)
